@@ -75,17 +75,17 @@ catalogo.agregar_producto(1, 'Teclado USB 101 teclas', 10, 4500, 'teclado.jpg', 
 catalogo.agregar_producto(2, 'Mouse USB 3 botones', 5, 2500, 'mouse.jpg', 102)
 catalogo.agregar_producto(3, 'Monitor LED', 5, 25000, 'monitor.jpg', 102)
 
-cod_producto = int(input("Ingresa código de producto: "))
-producto = catalogo.consultar_producto(cod_producto)
-if producto:
-   print(f"Producto encontrado: {producto['descripcion']}")
-else:
-   print("Producto no encontrado.")
+#cod_producto = int(input("Ingresa código de producto: "))
+#producto = catalogo.consultar_producto(cod_producto)
+#if producto:
+#   print(f"Producto encontrado: {producto['descripcion']}")
+#else:
+#   print("Producto no encontrado.")
 
-catalogo.mostrar_producto(1)
-catalogo.modificar_producto(1, 'Teclado mecánico', 20, 34000, 'tecmec.jpg', 106)
-catalogo.mostrar_producto(1)
+#catalogo.mostrar_producto(1)
+#catalogo.modificar_producto(1, 'Teclado mecánico', 20, 34000, 'tecmec.jpg', 106)
+#catalogo.mostrar_producto(1)
 
-catalogo.listar_productos()
-catalogo.eliminar_producto(2)
-catalogo.listar_productos()
+#atalogo.listar_productos()
+#catalogo.eliminar_producto(2)
+#catalogo.listar_productos()

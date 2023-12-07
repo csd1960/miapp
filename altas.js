@@ -1,43 +1,45 @@
-const URL = "http://127.0.0.1:5000/"
+//const URL = "http://127.0.0.1:5000/"
+const URL = "https://leonimariana60.pythonanywhere.com/"
 
 document.getElementById('formulario').addEventListener('submit', function
 (event) {
-event.preventDefault(); var formData = new FormData();
-formData.append('codigo', document.getElementById('codigo').value);
-formData.append('descripcion',
-document.getElementById('descripcion').value);
-formData.append('cantidad',
-document.getElementById('cantidad').value);
-formData.append('precio', document.getElementById('precio').value);
-formData.append('imagen',
-document.getElementById('imagenProducto').files[0]);
-formData.append('proveedor',
-document.getElementById('proveedorProducto').value);
-fetch(URL + 'productos', {
-method: 'POST',
-body: formData
-})
+    event.preventDefault(); var formData = new FormData();
+    formData.append('codigo', document.getElementById('codigo').value);
+    formData.append('descripcion',
+    document.getElementById('descripcion').value);
+    formData.append('cantidad',
+    document.getElementById('cantidad').value);
+    formData.append('precio', document.getElementById('precio').value);
+    formData.append('imagen',
+    document.getElementById('imagenProducto').files[0]);
+    formData.append('proveedor',
+    document.getElementById('proveedorProducto').value);
 
-.then(function (response) {
-     if (response.ok) {
-        return response.json();
-     } else {
-         throw new Error('Error al agregar el producto.');
-    }
-})
-.then(function () {
-    alert('Producto agregado correctamente.');
+    fetch(URL + 'productos', {
+        method: 'POST',
+        body: formData
+    })
+
+    .then(function (response) {
+      if (response.ok) {
+            return response.json();
+      } else {
+           throw new Error('Error al agregar el producto.');
+      }
+    })
+    .then(function () {
+        alert('Producto agregado correctamente.');
     })
     .catch(function (error) {
-    alert('Error al agregar el producto.');
-    console.error('Error:', error);
+        alert('Error al agregar el producto.');
+        console.error('Error:', error);
     })
-.finally(function () {
-    document.getElementById('codigo').value = "";
-    document.getElementById('descripcion').value = "";
-    document.getElementById('cantidad').value = "";
-    document.getElementById('precio').value = "";
-    document.getElementById('imagenProducto').value = "";
-    document.getElementById('proveedorProducto').value = "";
+    .finally(function () {
+        document.getElementById('codigo').value = "";
+        document.getElementById('descripcion').value = "";
+        document.getElementById('cantidad').value = "";
+        document.getElementById('precio').value = "";
+        document.getElementById('imagenProducto').value = "";
+        document.getElementById('proveedorProducto').value = "";
     });
-    })
+})

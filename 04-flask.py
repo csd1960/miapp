@@ -1,6 +1,7 @@
 #--------------------------------------------------------------------
-from flask import Flask, request, jsonify
+from flask import Flask
 from flask import request
+from flask import jsonify
 from flask_cors import CORS
 import mysql.connector
 from werkzeug.utils import secure_filename
@@ -17,6 +18,7 @@ class Catalogo:
             host=host,
             user=user,
             password=password
+            
         )
         self.cursor = self.conn.cursor()
         try:
@@ -28,12 +30,12 @@ class Catalogo:
             else:
                 raise err
         self.cursor.execute('''CREATE TABLE IF NOT EXISTS productos (
-            codigo INT,
-            descripcion VARCHAR(255) NOT NULL,
-            cantidad INT NOT NULL,
-            precio DECIMAL(10, 2) NOT NULL,
-            imagen_url VARCHAR(255),
-            proveedor INT)''')
+codigo INT,
+descripcion VARCHAR(255) NOT NULL,
+cantidad INT NOT NULL,
+precio DECIMAL(10, 2) NOT NULL,
+imagen_url VARCHAR(255),
+proveedor INT)''')
         self.conn.commit()
         self.cursor.close()
         self.cursor = self.conn.cursor(dictionary=True)
@@ -85,7 +87,9 @@ class Catalogo:
 #--------------------------------------------------------------------
 # Cuerpo del programa
 #--------------------------------------------------------------------
+#catalogo = Catalogo(host = 'localhost', user='root',password='',database='miapp')
 catalogo = Catalogo(host='leonimariana60.mysql.pythonanywhere-services.com', user='leonimariana60', password='emi6264feli', database='leonimariana60$miapp')
+#ruta_destino='static/img/'
 ruta_destino = '/home/leonimariana60/mysite/static/img/'
 # --------------------------------------------------------------------
 @app.route("/productos", methods=["GET"])
